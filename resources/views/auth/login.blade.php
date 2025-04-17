@@ -17,6 +17,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset ('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -53,7 +54,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Login Audit Checker</h5>
                     <p class="text-center small">Masukkan username & password untuk login</p>
                   </div>
 
@@ -73,10 +74,15 @@
                     </div>
                 
                     <div class="col-12">
-                        <label for="yourPassword" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="yourPassword" required>
-                        <div class="invalid-feedback">Masukkan password!</div>
-                    </div>
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <div class="input-group">
+                          <input type="password" name="password" class="form-control" id="yourPassword" required>
+                          <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                              <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                          </button>
+                      </div>
+                      <div class="invalid-feedback">Masukkan password!</div>
+                  </div>                  
                 
                     <div class="col-12">
                         <div class="form-check">
@@ -93,8 +99,8 @@
                 </div>
               </div>
 
-              <div class="credits">
-                Created By 
+              <div class="copyright">
+                &copy; Copyright <strong><span>Audit Checker</span></strong>. All Rights Reserved
               </div>
 
             </div>
@@ -120,6 +126,20 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset ('assets/js/main.js') }}"></script>
+
+  <script>
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordField = document.getElementById("yourPassword");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    togglePassword.addEventListener("click", function () {
+        const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.setAttribute("type", type);
+        eyeIcon.classList.toggle("bi-eye");
+        eyeIcon.classList.toggle("bi-eye-slash");
+    });
+</script>
+
 
 </body>
 

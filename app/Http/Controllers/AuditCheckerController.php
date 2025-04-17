@@ -26,7 +26,7 @@ class AuditCheckerController extends Controller
             $query->where('storage', $request->storage);
         }
 
-        // Ambil semua data audit (terfilter atau tidak)
+        // Ambil semua data audit
         $audits = $query->orderBy('created_at', 'desc')->get();
 
         // Tambahkan status apakah sudah disimpan

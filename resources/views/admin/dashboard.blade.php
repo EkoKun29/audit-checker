@@ -3,9 +3,8 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-    <h1>Selamat Datang {{ auth()->user()->name }} !</h1>
-    <p>Kelola disini
-    </p>
+    <h1 style="text-align: center">Hallo ! Selamat Datang <strong>{{ auth()->user()->name }} !</strong></h1>
+    <p style="text-align: center">Kelola Audit Checker Disini</p>
 @endsection
 
 
