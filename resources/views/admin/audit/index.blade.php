@@ -75,14 +75,14 @@
                                             <label for="btl" class="form-label">Btl</label>
                                             <input type="number" class="form-control" name="btl" value="{{ $audit->btl }}" required>
                                         </div>
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <label for="total" class="form-label">Total</label>
-                                            <input type="number" class="form-control" name="total" value="{{ $audit->total }}" required>
+                                            <input type="number" class="form-control" name="total" value="{{ old('total', $audit->total ?? '') }}" class="form-control" readonly >
                                         </div>
                                         <div class="col-md-4">
                                             <label for="total_real" class="form-label">Total Real</label>
                                             <input type="number" class="form-control" name="total_real" value="{{ $audit->total_real }}" required>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
@@ -135,14 +135,14 @@
                 <label for="btl" class="form-label">Btl</label>
                 <input type="number" class="form-control" name="btl" required>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <label for="total" class="form-label">Total</label>
-                <input type="number" class="form-control" name="total" required>
+                <input type="number" class="form-control" name="total" value="{{ old('total', $audit->total ?? '') }}" class="form-control" readonly >
             </div>
             <div class="col-md-4">
                 <label for="total_real" class="form-label">Total Real</label>
                 <input type="number" class="form-control" name="total_real" required>
-            </div>
+            </div> --}}
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>

@@ -25,11 +25,13 @@ class AuditController extends Controller
             'barang' => 'required',
             'dus' => 'required|integer',
             'btl' => 'required|integer',
-            'total' => 'required|numeric',
-            'total_real' => 'required|numeric',
+            'total' => 'numeric',
+            'total_real' => 'numeric',
         ]);
 
-        Audit::create($request->all());
+        $data = $request->all();
+        $data ['total'] = $data['dus'] * $data['btl'];
+        Audit::create($data);
         return redirect()->route('audit.index')->with('success', 'Data audit berhasil ditambahkan.');
     }
 
@@ -46,11 +48,13 @@ class AuditController extends Controller
             'barang' => 'required',
             'dus' => 'required|integer',
             'btl' => 'required|integer',
-            'total' => 'required|numeric',
-            'total_real' => 'required|numeric',
+            'total' => 'numeric',
+            'total_real' => 'numeric',
         ]);
 
-        $audit->update($request->all());
+        $data = $request->all();
+        $data ['total'] = $data['dus'] * $data['btl'];
+        $audit->update($data);
         return redirect()->route('audit.index')->with('success', 'Data audit berhasil diupdate.');
     }
 

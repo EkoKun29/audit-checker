@@ -52,7 +52,10 @@ class AuditCheckerController extends Controller
             'total' => 'required|numeric',
         ]);
 
-        AuditChecker::create($request->all());
+        // AuditChecker::create($request->all());
+        $data = $request->all();
+        $data ['total'] = $data['dus'] * $data['btl'];
+        AuditChecker::create($data);
 
         return redirect()->route('auditchecker.index')->with('success', 'Data AuditChecker berhasil ditambahkan.');
     }
@@ -75,7 +78,10 @@ class AuditCheckerController extends Controller
             'total' => 'required|numeric',
         ]);
 
-        $auditchecker->update($request->all());
+        // $auditchecker->update($request->all());
+        $data = $request->all();
+        $data ['total'] = $data['dus'] * $data['btl'];
+        $auditchecker->update($data);
 
         return redirect()->route('auditchecker.index')->with('success', 'Data AuditChecker berhasil diupdate.');
     }
@@ -97,7 +103,7 @@ class AuditCheckerController extends Controller
             'dus' => $request->input("dus.$auditId"),
             'btl' => $request->input("btl.$auditId"),
             'kotak' => 0,
-            'total' => ($request->input("dus.$auditId") + $request->input("btl.$auditId")),
+            'total' => ($request->input("dus.$auditId") * $request->input("btl.$auditId")),
         ]);
 
         return redirect()->route('auditchecker.index')->with('success', 'Data berhasil disimpan.');
