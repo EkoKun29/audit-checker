@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h2>Data Audit Checker</h2>
+    <h2>Input Audit Checker</h2>
 
     <!-- Form Pencarian Audit -->
     <div class="card mb-4">
@@ -20,9 +20,9 @@
                         <label for="id_user" class="form-label">Siapa Yang Audit</label>
                         <select class="form-select" name="id_user">
                             <option value="">-- Pilih User --</option>
-                            @foreach($users as $user)
-                                <option value="{{ $user->id }}" {{ request('id_user') == $user->id ? 'selected' : '' }}>
-                                    {{ $user->name }}
+                            @foreach($auditors as $auditor)
+                                <option value="{{ $auditor }}" {{ request('id_user') == $auditor ? 'selected' : '' }}>
+                                    {{ $auditor }}
                                 </option>
                             @endforeach
                         </select>
@@ -50,7 +50,7 @@
     <!-- Tabel Data Audit dari hasil filter -->
     <form action="{{ route('auditchecker.storeFromTable') }}" method="POST">
         @csrf
-        <table class="table table-bordered">
+        <table class="table datatable">
             <thead>
                 <tr>
                     <th>No</th>

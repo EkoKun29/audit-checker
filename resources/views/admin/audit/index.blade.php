@@ -32,7 +32,7 @@
                         <td>{{ $audit->dus }}</td>
                         <td>{{ $audit->btl }}</td>
                         <td>{{ $audit->total }}</td>
-                        <td>{{ $audit->total_real }}</td>
+                        <td>{{ $audit->total }}</td>
                         <td>
                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editAuditModal{{ $audit->id }}">Edit</button>
                             <form action="{{ route('audit.destroy', $audit->id) }}" method="POST" style="display:inline-block;">

@@ -12,32 +12,33 @@ class AuditCheckerController extends Controller
     public function index(Request $request)
     {
         $query = Audit::query();
-
+        
         // Tambahkan filter jika ada inputan dari request
         if ($request->filled('tanggal_audit')) {
             $query->whereDate('created_at', $request->tanggal_audit);
         }
-
+        
         if ($request->filled('id_user')) {
             $query->where('id_user', $request->id_user);
         }
-
+        
         if ($request->filled('storage')) {
             $query->where('storage', $request->storage);
         }
-
+        
         // Ambil semua data audit
         $audits = $query->orderBy('created_at', 'desc')->get();
-
+        
         // Tambahkan status apakah sudah disimpan
         foreach ($audits as $audit) {
             $audit->sudah_disimpan = AuditChecker::where('id_audit', $audit->id)->exists();
         }
-
-        $users = User::all();
+        
+        // Ambil data id_user dari tabel audits (bukan dari tabel users)
+        $auditors = Audit::select('id_user')->distinct()->pluck('id_user');
         $storages = Audit::select('storage')->distinct()->pluck('storage');
-
-        return view('admin.audit-checker.index', compact('audits', 'users', 'storages'));
+        
+        return view('admin.audit-checker.index', compact('audits', 'auditors', 'storages'));
     }
 
     public function store(Request $request)
