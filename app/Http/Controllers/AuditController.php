@@ -63,4 +63,17 @@ class AuditController extends Controller
         $audit->delete();
         return redirect()->route('audit.index')->with('success', 'Data audit berhasil dihapus.');
     }
+    
+    //API
+    public function apiIndex()
+    {
+        $audits = Audit::all();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Audit',
+            'data' => $audits
+        ]);
+    }
 }
+

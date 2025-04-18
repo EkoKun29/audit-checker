@@ -109,5 +109,16 @@ class AuditCheckerController extends Controller
 
         return redirect()->route('auditchecker.index')->with('success', 'Data berhasil disimpan.');
     }
+    //API
+    public function apiIndex()
+    {
+        $auditsCheckers = AuditChecker::all();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Audit Checkers',
+            'data' => $auditsCheckers
+        ]);
+    }
 
 }

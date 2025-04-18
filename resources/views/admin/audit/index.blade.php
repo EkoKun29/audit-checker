@@ -5,7 +5,7 @@
     <div class="card-body">
         <h5 class="card-title">Data Audit</h5>
         <div class="card-body">
-            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createAuditModal">Tambah Audit</button>
+            {{-- <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createAuditModal">Tambah Audit</button> --}}
 
             <table class="table datatable">
                 <thead>
